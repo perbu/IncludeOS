@@ -7,8 +7,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2.0.0
-    - name: prepare build system
-      run: apt-get update && apt-get -y python3-pip python3-dev git cmake clang-6.0 gcc nasm make qemu && apt-get clean
+    - name: Setup C++ environment
+      uses: kurocha/setup-cpp@v1    
     - name: Register layout
       run: conan editable add . includeos/$(conan inspect -a version . | cut -d " " -f 2)@includeos/latest --layout=etc/layout.txt
     - name: List Editable targets
