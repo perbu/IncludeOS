@@ -11,6 +11,8 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y --no-install-recommends python3-pip python3-setuptools python3-wheel python3-dev git cmake clang-6.0 gcc nasm make qemu && sudo pip3 install conan psutil jsonschema 
     - name: Conan install
       run: conan config install https://github.com/includeos/conan_config.git
+    - name: Show IncludeOS version
+      run: conan inspect -a version .
     - name: Register layout
 #      run: conan editable add . includeos/$(conan inspect -a version . | cut -d " " -f 2)@includeos/latest --layout=etc/layout.txt'
       run: conan editable add . includeos/0.0.0@includeos/latest --layout=etc/layout.txt
@@ -20,7 +22,3 @@ jobs:
       run:  conan install -if build . -pr clang-6.0-linux-x86_64
     - name: conan
       run: conan build -bf build .
-    - name: make 
-      run: cd build && make
-
-      
