@@ -17,6 +17,7 @@ jobs:
       run:  conan install -if build . -pr clang-6.0-linux-x86_64
     - name: conan
       run: conan build -bf build .
-    - name: cd build && make
-    
+    - name: make 
+      run: cd build && make
+
       
