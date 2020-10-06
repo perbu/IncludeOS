@@ -16,8 +16,7 @@ jobs:
     - name: Show IncludeOS version
       run: conan inspect -a version $GITHUB_WORKSPACE
     - name: Register layout
-#      run: conan editable add . includeos/$(conan inspect -a version . | cut -d " " -f 2)@includeos/latest --layout=etc/layout.txt'
-      run: conan editable add . includeos/0.0.0@includeos/latest --layout=etc/layout.txt
+      run: conan editable add . includeos/$(conan inspect -a version . | cut -d " " -f 2)@includeos/latest --layout=etc/layout.txt'
     - name: List Editable targets
       run: conan editable list
     - name: conan install 
